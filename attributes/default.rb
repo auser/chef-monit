@@ -20,6 +20,12 @@
 default["monit"]["polling_frequency"] = "20"
 default["monit"]["use_syslog"]        = "true"
 default["monit"]["logfile"]           = "/var/log/monit.log"
+default["monit"]["idfile"]            = "/var/lib/monit/id"
+default["monit"]["statefile"]         = "/var/lib/monit/state"
+default["monit"]["eventqueue"] = {
+  :basedir => "/var/lib/monit/events",
+  :slots => 100
+}
 default["monit"]["alert_email"]       = "root@localhost"
 
 default["monit"]["web_interface"] = {

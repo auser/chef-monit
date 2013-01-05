@@ -8,6 +8,19 @@ set logfile syslog facility log_daemon
 set logfile <%= node[:monit][:logfile] %>
 <% end %>
 
+# id file
+set idfile <%= node[:monit][:idfile] %>
+
+# statefile
+set statefile <%= node[:monit][:statefile] %>
+
+# Eventqueue
+<% if node[:monit][:eventqueue] == "true" -%>
+set eventqueue
+  basedir <%= node[:monit][:eventqueue][:basedir] %>
+  slots <%= node[:monit][:eventqueue][:slots] %>
+<% end %>
+
 # Mail alerts
 set alert <%= node[:monit][:alert_email] %>
 set mailserver <%= node[:monit][:mail][:hostname] %> port <%= node[:monit][:mail][:port] %>
